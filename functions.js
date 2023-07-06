@@ -102,20 +102,49 @@ console.log(smartSum(5, 8));
 console.log(smartSum(10, 5));
 console.log(smartSum(1000, 1));
 
-const name = "Sebastiano";
-
-function sayHi(str) {
-  console.log("Ciao! " + str + " benvenuto in EPICODE!");
+// funzione statica, non accetta dati in input, produrrà sempre lo stesso risultato (la stessa stringa)
+function sayHi() {
+  console.log("Ciao! Ragazzi benvenuti in EPICODE!");
 }
 
-sayHi("Alessia");
-sayHi("Alessia");
-sayHi("Alessia");
-sayHi("Alessia");
-sayHi("Alessia");
+sayHi("Ciao"); // questa stringa "Ciao" verrà ignorata in quanto la funzione NON si aspetta parametri (dati in ingresso)
+
+// avendo definito un PARAMETRO, ci possiamo aspettare dati differenti per ogni volta che la funzione si eseguirà
+function sayHiTo(name, specialChar) {
+  console.log("Ciao! " + name + " benvenuto in EPICODE" + specialChar);
+}
+
+sayHiTo("Alessia", "!");
+sayHiTo("Massimo", "*");
 
 const arrOfNames = ["Alessia", "Emanuele", "Vittorio", "Lorenzo"];
 
 for (let i = 0; i < arrOfNames.length; i++) {
-  sayHi(arrOfNames[i]);
+  sayHiTo(arrOfNames[i], "!!!");
 }
+
+// il terzo parametro ha un valore di default nel caso in cui non gli venga fornito al momento dell'esecuzione della funzione
+function replaceElementCustom(arr, positionIndex, newElement = "Dragon") {
+  //   const copiedArray = animals.concat();
+  const copiedArray = arr.slice(); // nuovo array in memoria identico ad animals (nel primo livello)
+  //   const newElement = "Dragon";
+  //   let positionIndex = null;
+
+  // for (let i = 0; i < copiedArray.length; i++) {
+  //   const stringToVerify = copiedArray[i];
+  //   if (stringToVerify === "Bunny") {
+  //     // se siamo qua l'indice i è quello che cerchiamo!
+  //     positionIndex = i;
+  //   }
+  // }
+
+  copiedArray.splice(positionIndex, 1, newElement);
+
+  return copiedArray;
+}
+
+const newAnimals = replaceElementCustom(animals, 3); // "Dragon" è il valore di default del terzo argomento mancante
+const newAnimals2 = replaceElementCustom(["Cavallo", "Mucca", "Topo", "Colibrì"], 2, "Mickey");
+
+console.log(newAnimals);
+console.log(newAnimals2);
