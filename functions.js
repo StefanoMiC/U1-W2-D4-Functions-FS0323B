@@ -148,3 +148,13 @@ const newAnimals2 = replaceElementCustom(["Cavallo", "Mucca", "Topo", "Colibrì"
 
 console.log(newAnimals);
 console.log(newAnimals2);
+
+test();
+function test() {
+  console.log("ciao");
+}
+
+const test2 = function () {
+  console.log("ariciao");
+};
+test2();
